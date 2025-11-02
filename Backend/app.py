@@ -33,10 +33,13 @@ OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
 # Load ML models
 try:
-    xception_model = load_model(r'C:\\Users\\91989\\OneDrive\\Desktop\\coding\\Ensamble\\Backend\\Model\\xception_model.keras', compile=False)
-    resnet_model = load_model(r'C:\\Users\\91989\\OneDrive\\Desktop\\coding\\Ensamble\\Backend\Model\\resnet_model.keras', compile=False)
-    vgg_model = load_model(r'C:\\Users\\91989\\OneDrive\\Desktop\\coding\\Ensamble\\Backend\\Model\\vgg_model.keras', compile=False)
-    logging.info("✅ All models loaded successfully.")
+     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+     MODEL_DIR = os.path.join(BASE_DIR, 'Model')
+
+     xception_model = load_model(os.path.join(MODEL_DIR, 'xception_model.keras'), compile=False)
+     resnet_model = load_model(os.path.join(MODEL_DIR, 'resnet_model.keras'), compile=False)
+     vgg_model = load_model(os.path.join(MODEL_DIR, 'vgg_model.keras'), compile=False)
+     logging.info("✅ All models loaded successfully.")
 except Exception as e:
     logging.error(f"❌ Error loading model: {e}")
 
@@ -131,7 +134,7 @@ def predict():
                 "label": predicted_label,
                 "confidence": round(confidence, 4),
                 "accuracy": accuracy,
-                "image_url": f"http://localhost:5000/uploads/{filename}"
+                "image_url": url_for('uploaded_file', filename=filename, _external=True)
             }
 
         except Exception as e:
@@ -287,4 +290,4 @@ def uploaded_file(filename):
 # ------------------ RUN APP ------------------
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
