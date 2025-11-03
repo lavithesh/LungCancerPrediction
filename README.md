@@ -1,170 +1,92 @@
-🩺 Ensemble-Based Lung Cancer Prediction
+<h1>🩺 Ensemble-Based Lung Cancer Prediction
 
-Lung Cancer Prediction is a deep-learning–based research and production-ready project that detects and classifies lung cancer from medical images (DICOM / CT / X-ray).
-It integrates TensorFlow CNN models with an ensemble technique and provides a complete Flask + React web application for real-time predictions and AI-generated explanations.
+Ensemble-Based Lung Cancer Prediction is a deep learning–powered web application that predicts and classifies lung cancer from medical images (DICOM / CT / X-ray) using an ensemble of CNN models — Xception, ResNet, and VGG.
+It provides real-time predictions and AI-generated explanations through a Flask + React interface.</h1>
 
-🚀 Project Overview
+<h2>🚀 Features
 
-This project provides an end-to-end pipeline for automated lung cancer detection:
+🧠 Upload and analyze medical images (CT / X-ray) instantly
 
-Preprocess and normalize DICOM / image files.
+🔗 Ensemble model combining Xception, ResNet, and VGG for high accuracy
 
-Train deep CNN models (Xception, ResNet, VGG).
+🤖 AI-based explanation using Hugging Face / Groq API
 
-Combine model outputs through ensemble averaging for higher accuracy.
+⚙️ Flask REST API for backend inference
 
-Serve predictions through a Flask REST API.
+💻 React frontend for image upload & real-time display
 
-Use a React frontend to upload images and view predictions in real time.
+🔒 Secure session-based login system
 
-✨ Features
+⚡ Supports both CPU and GPU environments</h2>
 
-✅ DICOM & image preprocessing pipeline
-✅ Ensemble model combining Xception, ResNet & VGG
-✅ Flask REST API for inference
-✅ React frontend with real-time upload & display
-✅ AI-generated textual analysis using Hugging Face / Groq API
-✅ GPU acceleration supported
-✅ Configurable training & evaluation scripts
+<h1>🧠 Technologies Used</h1>
 
-📁 Repository Structure
-LungCancerPrediction/
-│
-├── Backend/                     # Flask backend (API + ML models)
-│   ├── app.py                   # Main Flask server
-│   ├── models/                  # Saved CNN models (.keras files)
-│   └── uploads/                 # Uploaded images
-│
-├── lung-cancer-prediction/      # React frontend
-│   ├── src/                     # React components
-│   ├── public/
-│   └── package.json
-│
-├── data/
-│   ├── raw/                     # Original DICOM / image files (not committed)
-│   ├── processed/               # Preprocessed images or numpy arrays
-│   └── labels.csv               # Image filenames + labels
-│
-├── notebooks/                   # Jupyter notebooks for EDA & model training
-├── src/                         # Core ML pipeline scripts
-│   ├── data_loader.py
-│   ├── augmentations.py
-│   ├── models.py
-│   ├── train.py
-│   ├── evaluate.py
-│   └── utils.py
-│
-├── requirements.txt             # Python dependencies
-├── README.md                    # Project documentation
-└── .gitignore                   # Ignored files (to be added)
-
-🧩 Technologies Used
+```
 Category	Tools / Libraries
-Backend (ML)	Python, TensorFlow / Keras, NumPy, Pandas, OpenCV, Pillow
-API Framework	Flask, Flask-CORS
+Backend (ML)	Python, Flask, TensorFlow / Keras, NumPy, Pandas
 Frontend	React.js, HTML, CSS, JavaScript
-AI Explanation	Hugging Face API / Groq API
-Visualization	Matplotlib, scikit-learn
-Environment	dotenv, Virtualenv
-⚙️ Setup & Run Instructions
-🖥️ 1️⃣ Clone the Repository
-git clone https://github.com/<your-username>/LungCancerPrediction.git
+AI Explanation	Hugging Face API, Groq API
+Utilities	OpenCV, Pillow, dotenv, Flask-CORS
+
+```
+
+⚙️ How to Run
+🧩 1️⃣ Clone the Repository
+
+```
+git clone https://github.com/yourusername/LungCancerPrediction.git
 cd LungCancerPrediction
+```
 
-🧩 2️⃣ Backend Setup (Flask API)
+<h1>💻 2️⃣ Run the Backend (Flask API)</h1>
 
-Navigate to the backend folder:
 ```
 cd Backend
-
-```
-Create and activate a virtual environment:
-```
 python -m venv venv
-venv\Scripts\activate       # Windows
+venv\Scripts\activate       # For Windows
 # or
-source venv/bin/activate    # macOS / Linux
-```
-
-Install dependencies:
-```
+source venv/bin/activate    # For macOS / Linux
 pip install -r ../requirements.txt
-```
-
-Start the Flask server:
-```
 python app.py
+
 ```
+✅ Backend will run at: http://localhost:5000
 
-✅ Backend will run at http://localhost:5000
+<h1>🌐 3️⃣ Run the Frontend (React App)
 
-💻 3️⃣ Frontend Setup (React App)
+Open a new terminal (keep backend running):</h1>
 
-Open a new terminal (keep backend running).
-
-Navigate to the frontend directory:
-```
+````
 cd lung-cancer-prediction
-```
-
-Install dependencies:
-```
 npm install
-```
-
-Start the React development server:
-```
 npm start
-```
+````
+✅ Frontend will run at: http://localhost:3000
 
-✅ Frontend will run at http://localhost:3000
+🔐 Environment Variables (.env Example)
 
-🌐 4️⃣ Access the Application
+Create a .env file inside the Backend directory:
 
-Now open your browser and visit:
-👉 http://localhost:3000
-
-You can:
-
-Upload lung scan images 🩻
-
-Get instant AI-based cancer predictions 🧠
-
-Receive text explanations powered by Hugging Face or Groq 💬
-
-🧠 Model Information
-
-The system uses an ensemble of three CNN architectures:
-
-Model	Framework	Role
-Xception	TensorFlow	Feature extractor
-ResNet50	TensorFlow	High-level feature refinement
-VGG16	TensorFlow	Texture & edge recognition
-Ensemble	Custom	Combines all predictions
-📊 Evaluation Metrics
-```
-Accuracy
-
-Precision / Recall / F1-Score
-
-Confusion Matrix
-
-ROC-AUC Curve
-```
-🧾 Environment Variables (.env Example)
-
-Create a .env file in the Backend folder:
 ```
 HF_API_KEY=your_huggingface_api_key
 GROQ_API_KEY=your_groq_api_key
+
 ```
-🙌 Contributors
+📊 Output
 
-👤 Lavithesh
+🩻 Predicted Lung Condition:
+Adenocarcinoma | Large Cell | Normal | Squamous Cell
+
+💬 AI-Generated Explanation: Simple medical summary + next steps
+
+🖼️ Uploaded Image Preview: Displayed in real time on the frontend
+
+👤 Author
+
+👨‍💻 Lavithesh
+🎓 Srinivas Institute of Technology
+💡 Passionate about AI, Deep Learning & Healthcare Innovation
+
 🧷 License
 
-This project is licensed under the MIT License – feel free to use and modify with credit.
-
-🧷 License
-
-This project is licensed under the MIT License – feel free to use and modify with credit.
+This project is licensed under the MIT License – feel free to use, modify, and distribute with proper credit.
